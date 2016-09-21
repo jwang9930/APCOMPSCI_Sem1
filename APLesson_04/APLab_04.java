@@ -6,8 +6,6 @@ public class APLab_04
 	{
 		APLab_04 form = new APLab_04();
 		
-		System.out.println("<<<<<<<<<<<<<<<__Receipt__>>>>>>>>>>>>>>>>");
-		
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Please enter item 1");
 		String word1 = kb.nextLine();
@@ -27,14 +25,15 @@ public class APLab_04
 		double number3 = kb.nextDouble();
 		
 		String word4 = "Subtotal:";
-		double number4 = 9.01;
+		double number4 = number1+number2+number3;
 		
 		String word5 = "Tax:";
-		double number5 = 0.63;
+		double number5 = .07*number4;
 		
 		String word6 = "Total";
-		double number6 = 9.64;
+		double number6 = number4+number5;
 		
+		System.out.println("<<<<<<<<<<<<<<<__Receipt__>>>>>>>>>>>>>>>>");
 		form.format(word1, number1);
 		form.format(word2, number2);
 		form.format(word3, number3);
