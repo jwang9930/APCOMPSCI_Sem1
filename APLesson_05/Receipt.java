@@ -30,7 +30,7 @@ public class Receipt
 		
 		total = price1+ price2 + price3 + price4;
 		
-		dis();
+		discount();
 		
 		System.out.println("<<<<<<<<<<< Receipt >>>>>>>>>>>>>>");
 		format(item1, price1);
@@ -40,9 +40,10 @@ public class Receipt
 		format("Total", total);
 		format("Discount", discount);
 		System.out.println("\n__________________________________");
+		System.out.println("\t\tThank you!");
 	}
 	
-	public static void dis()
+	public static void discount()
 	{
 		
 		if(total >= 2000)
@@ -61,6 +62,6 @@ public class Receipt
 	
 	public static void format(String item1, double price1)
 	{
-		System.out.printf("\n%10s ..... %.2f", item1, price1);
+		System.out.printf("\n%10s ..... $%.2f", item1, price1);
 	}
 }
