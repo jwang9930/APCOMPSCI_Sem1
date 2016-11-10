@@ -10,16 +10,17 @@ public class Cube_4_2
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Enter cube side length: ");
 		side = kb.nextDouble();
-		format(sa);
+		calculate();
+		format();
 	}
 
-	public static double calculate()
+	public static void calculate()
 	{
-		return sa = 6*side*side;
+		sa = 6*side*side;
 	}
 	
-	public static void format(double calculate)
+	public static void format()
 	{
-		System.out.printf("The surface area of a cube with " + side + " sides is " + "%.5f.", calculate());
+		System.out.printf("The surface area of a cube with " + side + " sides is " + "%.5f.", sa);
 	}
 } 

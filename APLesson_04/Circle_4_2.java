@@ -10,16 +10,17 @@ public class Circle_4_2
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Enter circle radius: ");
 		r = kb.nextDouble();
-		format(area);
+		calculate();
+		format();
 	}
 	
-	public static double calculate()
+	public static void calculate()
 	{
-		return area = 3.14*r*r;
+		area = 3.14*r*r;
 	}
 	
-	public static void format(double calculate)
+	public static void format()
 	{
-		System.out.printf("The area of a circle with a radius of " + r + " is " + "%.5f.", calculate());
+		System.out.printf("The area of a circle with a radius of " + r + " is " + "%.5f.", area);
 	}
-} 
+}

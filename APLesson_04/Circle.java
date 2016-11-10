@@ -2,13 +2,11 @@ import java.util.Scanner;
 
 public class Circle
 {
-	static double r;
-	
 	public static void main(String[]args)
 	{
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Enter circle radius: ");
-		r = kb.nextDouble();
+		double r = kb.nextDouble();
 		format(r,calculate(r));
 	}
 	

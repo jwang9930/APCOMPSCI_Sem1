@@ -12,17 +12,18 @@ public class Rectangle_4_2
 		length = kb.nextDouble();
 		System.out.println("Enter width: ");
 		width = kb.nextDouble();
+		calculate();
 		print();
 		
 	}
 	
-	public static double calculate()
+	public static void calculate()
 	{
-		return perimeter = (2*length + 2*width);
+		perimeter = (2*length + 2*width);
 	}
 	
 	public static void print()
 	{
-		System.out.printf("Your Rectangle is " + "%.5f" + " ft around.", calculate());
+		System.out.printf("Your Rectangle is " + "%.5f" + " ft around.", perimeter);
 	}
  }

@@ -16,17 +16,18 @@ public class Average_4_2
 		num2 = kb.nextDouble();
 		System.out.println("Enter Number 3: ");
 		num3 = kb.nextDouble();
-		format(average);
+		calculate();
+		format();
 		
 	}
 	
-	public static double calculate()
+	public static void calculate()
 	{
-		return average = (num1+num2+num3)/3;
+		average = (num1+num2+num3)/3;
 	}
 	
-	public static void format(double calculate)
+	public static void format()
 	{
-		System.out.printf("The average of " + num1 + ", " + num2 + ", and " + num3 + " is " + "%.5f" + ".", calculate());
+		System.out.printf("The average of " + num1 + ", " + num2 + ", and " + num3 + " is " + "%.5f" + ".", average);
 	}
 }

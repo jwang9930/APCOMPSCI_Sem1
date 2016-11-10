@@ -2,16 +2,13 @@ import java.util.Scanner;
 
 public class Rectangle
 {	
-	static double length;
-	static double width;
-	
 	public static void main(String[]args)
 	{
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Enter length: ");
-		length = kb.nextDouble();
+		double length = kb.nextDouble();
 		System.out.println("Enter width: ");
-		width = kb.nextDouble();
+		double width = kb.nextDouble();
 		print(calculate(length, width));
 		
 	}
