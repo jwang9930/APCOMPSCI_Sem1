@@ -2,15 +2,19 @@ import java.util.Scanner;
 
 public class Average
 {
+	static double num1;
+	static double num2;
+	static double num3;
+	
 	public static void main(String[]args)
 	{
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Enter Number 1: ");
-		double num1 = kb.nextDouble();
+		num1 = kb.nextDouble();
 		System.out.println("Enter Number 2: ");
-		double num2 = kb.nextDouble();
+		num2 = kb.nextDouble();
 		System.out.println("Enter Number 3: ");
-		double num3 = kb.nextDouble();
+		num3 = kb.nextDouble();
 		format(num1, num2, num3, calculate(num1, num2, num3));
 		
 	}

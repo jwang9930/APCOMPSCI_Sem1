@@ -1,14 +1,17 @@
 import java.util.Scanner;
 
 public class Rectangle
-{
+{	
+	static double length;
+	static double width;
+	
 	public static void main(String[]args)
 	{
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Enter length: ");
-		double length = kb.nextDouble();
+		length = kb.nextDouble();
 		System.out.println("Enter width: ");
-		double width = kb.nextDouble();
+		width = kb.nextDouble();
 		print(calculate(length, width));
 		
 	}
@@ -23,4 +26,3 @@ public class Rectangle
 		System.out.printf("Your Rectangle is " + "%.5f" + " ft around.", perimeter);
 	}
 }
-
