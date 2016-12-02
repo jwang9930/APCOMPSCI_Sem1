@@ -6,10 +6,11 @@ public class Factorial
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Enter your number: ");
 		int num = kb.nextInt();
-		
-		for(int factorial = 1; factorial < num; factorial++)
+		int factorial = 1;
+		for(int i = 1; i <= num; i++)
 		{
-			System.out.println(factorial*(factorial+1));
+			factorial = (factorial*(i));
 		}
+		System.out.println(factorial);
 	}
 }
