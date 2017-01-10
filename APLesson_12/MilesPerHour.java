@@ -1,10 +1,10 @@
-import java.util.Scanner;
-public class MPH
+import java.lang.Math.*;
+public class MilesPerHour
 {
 	private int distance, hours, minutes; 
 	private double mph; 
 	
-	public MPH()
+	public MilesPerHour()
 	{
 		distance = 0;
 		hours = 0;
@@ -12,31 +12,39 @@ public class MPH
 		mph = 0;
 	}
 	
-	public MPH(int dist, int hr, int min)
+	public MilesPerHour(int dist, int hrs, int min)
 	{
 		distance = dist;
-		hours = hr;
+		hours = hrs;
 		minutes = min;
 		mph = 0;
 	}
 	
-	public void modifyValues()
+	public void setValues(int dist, int hrs, int min)
 	{
-		
+		distance = dist;
+		hours = hrs;
+		minutes = min;
 	}
 	
-	public static void main(String[]args)
+	public int getDistance()
 	{
-		Scanner kb = new Scanner(System.in);
-		System.out.println("Enter distance traveled: ");
-		distance = kb.nextInt();
-		System.out.println("Enter the number of hours: ");
-		hours = kb.nextInt();
-		System.out.println("Enter the minutes: ");
-		minutes = kb.nextInt();
-		
-		MPH MilesPerHour = new MPH(int distance, int hours, int minutes);
-		
-		System.out.println();
+		return distance;
+	}
+	
+	public int getHours()
+	{
+		return hours; 
+	}
+	
+	public int getMinutes()
+	{
+		return minutes;
+	}
+	
+	public double getMPH()
+	{
+		mph = Math.round(distance / (hours + minutes/60.0));
+		return mph;
 	}
 }
