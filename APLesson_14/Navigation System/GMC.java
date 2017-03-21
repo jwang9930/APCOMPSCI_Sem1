@@ -1,6 +1,4 @@
-import java.util.Arrays;
-
-public class GMC implements Interface
+public class GMC implements Location
 {
 	private double x, y;
 	

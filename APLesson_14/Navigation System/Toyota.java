@@ -1,15 +1,15 @@
-public class Toyota implements Interface
+public class Toyota implements Location
 {
-	private double[] location = new double[2];
+	private double[] location;
 	
 	public Toyota()
 	{
-		location[0] = 0;
-		location[1] = 0;
+		location = new double[2];
 	}
 	
 	public Toyota(String c)
 	{
+		location = new double[2];
 		String[] points = c.split(", ");
 		this.location[0] = Double.parseDouble(points[0]);
 		this.location[1] = Double.parseDouble(points[1]);
