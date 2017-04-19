@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
-public class MagpieRunner2
+public class MagpiePart2Runner
 {
-
 	public static void main(String[] args)
 	{
-		Magpie2 maggie = new Magpie2();
+		MagpiePart2 maggie = new MagpiePart2();
 		
 		System.out.println (maggie.getGreeting());
 		Scanner in = new Scanner (System.in);
@@ -17,5 +16,4 @@ public class MagpieRunner2
 			statement = in.nextLine();
 		}
 	}
-
 }

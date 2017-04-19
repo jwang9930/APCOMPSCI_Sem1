@@ -1,4 +1,4 @@
-public class Magpie2
+public class MagpiePart2
 {
 	public String getGreeting()
 	{
@@ -35,13 +35,50 @@ public class Magpie2
 		{
 			response = "He sounds like a pretty dank teacher.";
 		}
+		else if (findKeyword(statement, "I want to", 0) >= 0)
+		{
+		response = transformIWantToStatement(statement);
+		}
 		else
 		{
-			response = getRandomResponse();
+			int psn = findKeyword(statement, "you", 0);
+			if (psn >= 0 && findKeyword(statement, "me", psn) >= 0)
+			{
+				response = transformYouMeStatement(statement);
+			}
+			else
+			{
+				response = getRandomResponse();
+			}
 		}
 		return response;
 	}
 
+	private String transformIWantToStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.charAt(statement.length() - 1) + "";
+		if(lastChar.equals("."))
+			statement = statement.replace(lastChar, "");
+		
+		int psn = findKeyword(statement, "I want to");
+		String restOfStatement = statement.substring(psn+9);
+		return "What would it mean to" + restOfStatement;
+	}
+	
+	private String transformYouMeStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.charAt(statement.length() - 1) + "";
+		if(lastChar.equals("."))
+			statement = statement.replace(lastChar, "");
+		
+		int psnOfYou = findKeyword(statement, "you");
+		int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
+		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe);
+		return "What makes you think that I" + restOfStatement + "you?";
+	}
+	
 	private int findKeyword(String statement, String goal, int startPos)
 	{
 		String phrase = (statement.trim()).toLowerCase();
