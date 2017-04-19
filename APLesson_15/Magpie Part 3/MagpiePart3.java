@@ -1,4 +1,4 @@
-public class MagpiePart2
+public class MagpiePart3
 {
 	public String getGreeting()
 	{
@@ -8,6 +8,7 @@ public class MagpiePart2
 	public String getResponse(String statement)
 	{
 		String response = "";
+		
 		if(statement.equals(""))
 		{
 			System.out.println("Say something, please.");
@@ -17,6 +18,7 @@ public class MagpiePart2
 		{
 			response = "Why so negative?";
 		}
+		
 		else if (findKeyword(statement, "mother", 0) >= 0
 				|| findKeyword(statement, "father", 0) >= 0
 				|| findKeyword(statement, "sister", 0) >= 0
@@ -24,6 +26,7 @@ public class MagpiePart2
 		{
 			response = "Tell me more about your family.";
 		}
+		
 		else if (findKeyword(statement, "cat", 0) >= 0
 				|| findKeyword(statement, "dog", 0) >= 0
 				|| findKeyword(statement, "fish", 0) >= 0
@@ -31,27 +34,38 @@ public class MagpiePart2
 		{
 			response = "Tell me more about your pet.";
 		}
+		
 		else if(findKeyword(statement, "robinette", 0) >= 0)
 		{
 			response = "He sounds like a pretty dank teacher.";
 		}
+		
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
 		}
 		
-		else
+		else if(findKeyword(statement, "you", 0) >= 0)
 		{
 			int psn = findKeyword(statement, "you", 0);
 			if (psn >= 0 && findKeyword(statement, "me", psn) >= 0)
 			{
 				response = transformYouMeStatement(statement);
 			}
-			else
+		}
+		
+		else if(findKeyword(statement, "i", 0) >= 0)
+		{
+			int psn = findKeyword(statement, "i", 0);
+			if(findKeyword(statement, "you", psn) >= 0 && psn >= 0)
 			{
-				response = getRandomResponse();
+				response = transformIYouStatement(statement);
 			}
 		}
+		
+		else
+			response = getRandomResponse();
+		
 		return response;
 	}
 
@@ -78,6 +92,19 @@ public class MagpiePart2
 		int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
 		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe);
 		return "What makes you think that I" + restOfStatement + "you?";
+	}
+	
+	private String transformIYouStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement.length() - 1) + "";
+		if(lastChar.equals("."))
+			statement = statement.replace(lastChar, "");
+		
+		int psnI = findKeyword(statement, "i");
+		int psnYou = findKeyword(statement, "you", psnI + 3);
+		String restOfStatement = statement.substring(psnI + 1, psnYou);
+		return "Why do you" + restOfStatement + "me?";
 	}
 	
 	private int findKeyword(String statement, String goal, int startPos)
