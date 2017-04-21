@@ -45,27 +45,25 @@ public class MagpiePart3
 			response = transformIWantToStatement(statement);
 		}
 		
-		else if(findKeyword(statement, "you", 0) >= 0)
+		else
 		{
-			int psn = findKeyword(statement, "you", 0);
+			int psn = findKeyword(statement, "You", 0);
 			if (psn >= 0 && findKeyword(statement, "me", psn) >= 0)
 			{
 				response = transformYouMeStatement(statement);
 			}
-		}
-		
-		else if(findKeyword(statement, "i", 0) >= 0)
-		{
-			int psn = findKeyword(statement, "i", 0);
-			if(findKeyword(statement, "you", psn) >= 0 && psn >= 0)
+
+			else
 			{
-				response = transformIYouStatement(statement);
+				psn = findKeyword(statement, "i", 0);
+				if(psn >= 0 && findKeyword(statement, "you", psn) >= 0)
+				{
+					response = transformIYouStatement(statement);
+				}
+				else 
+					response = getRandomResponse();
 			}
 		}
-		
-		else
-			response = getRandomResponse();
-		
 		return response;
 	}
 
@@ -83,10 +81,10 @@ public class MagpiePart3
 	
 	private String transformYouMeStatement(String statement)
 	{
-		statement = statement.trim();
-		String lastChar = statement.charAt(statement.length() - 1) + "";
+		statement = statement.trim().toLowerCase();
+		String lastChar = statement.substring(statement.length() - 1);
 		if(lastChar.equals("."))
-			statement = statement.replace(lastChar, "");
+			statement = statement.substring(0, statement.length() - 1);
 		
 		int psnOfYou = findKeyword(statement, "you");
 		int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
@@ -96,47 +94,45 @@ public class MagpiePart3
 	
 	private String transformIYouStatement(String statement)
 	{
-		statement = statement.trim();
-		String lastChar = statement.substring(statement.length() - 1) + "";
+		statement = statement.trim().toLowerCase();
+		String lastChar = statement.substring(statement.length() - 1);
 		if(lastChar.equals("."))
-			statement = statement.replace(lastChar, "");
+			statement = statement.substring(0, statement.length()-1);
 		
-		int psnI = findKeyword(statement, "i");
-		int psnYou = findKeyword(statement, "you", psnI + 3);
+		int psnI = findKeyword(statement, "I");
+		int psnYou = findKeyword(statement, "you", psnI + 1);
 		String restOfStatement = statement.substring(psnI + 1, psnYou);
 		return "Why do you" + restOfStatement + "me?";
 	}
 	
 	private int findKeyword(String statement, String goal, int startPos)
 	{
-		String phrase = (statement.trim()).toLowerCase();
+		String phrase = statement.trim().toLowerCase();
+		//System.out.println(phrase + "\n" + goal);
 		goal = goal.toLowerCase();
 
 		int psn = phrase.indexOf(goal, startPos);
 
 		while (psn >= 0)
 		{
-
-			String before = " ", after = " ";
+			String before = "", after = "";
 			if (psn > 0)
 			{
 				before = phrase.substring(psn - 1, psn);
 			}
-			if (phrase.length() > psn + goal.length() + 1)
+			if (psn + goal.length() + 1 < phrase.length())
 			{
 				after = phrase.substring(psn + goal.length(),
 										psn + goal.length() + 1);
 			}
 
-			if (((before.compareTo("a") < 0) || (before.compareTo("z") > 0))
-					&& ((after.compareTo("a") < 0) || (after.compareTo("z") > 0)))
+			if ((before.compareTo("a") < 0 || before.compareTo("z") > 0)
+					&& (after.compareTo("a") < 0 || after.compareTo("z") > 0))
 			{
 				return psn;
 			}
-			else
-				psn = phrase.indexOf(goal, psn + 1);
+			psn = phrase.indexOf(goal, psn + 1);
 		}
-
 		return -1;
 
 	}
