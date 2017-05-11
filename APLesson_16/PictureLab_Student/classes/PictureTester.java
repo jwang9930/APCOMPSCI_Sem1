@@ -86,8 +86,7 @@ public class PictureTester
   public static void testCopy()
   {
 	  Picture b = new Picture("beach.jpg");
-	  Picture k = new Picture("koala.jpg");
-	  b.copy(k, 100, 25, 60, 21, 107, 85);
+	  b.createCollage();
 	  b.explore();
   }
   
@@ -157,9 +156,9 @@ public class PictureTester
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-    //testCopy();
+    testCopy();
 	//testmyCollage();
-    testEdgeDetection();
+    //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
