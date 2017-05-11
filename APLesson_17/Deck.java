@@ -31,6 +31,8 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		Deck d = new Deck(ranks, suits, values);
+		
 	}
 
 
@@ -40,6 +42,10 @@ public class Deck {
 	 */
 	public boolean isEmpty() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		if(size == 0)
+			return true;
+		else
+			return false;
 	}
 
 	/**
